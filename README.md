@@ -1,3 +1,8 @@
 # Respuestas Evaluación 2 introducción a Tecnología de Información
 
-pregunta 2
+Andres Gomez
+Juan Capera
+David Valenzuela
+Santiago Agudelo
+
+pregunta 
