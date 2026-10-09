@@ -107,7 +107,12 @@ resistencia de base de 1 kiloohmio. El sketch .ino se carga desde la terminal de
 Raspberry Pi 5 con Debian 13 con Arduino CLI (interfaz de línea de comandos). Si la
 unión base-emisor presenta una caída de 0,7 voltios en saturación, ¿qué corriente de
 base circula aproximadamente?
-
+### Respuesta:4,3 miliamperios.
+La corriente de base se calcula aplicando la ley de Ohm:
+I = (Voltaje de entrada − Caída base-emisor) / Resistencia
+I = (5 V − 0,7 V) / 1000 Ω
+I = 4,3 / 1000 = 0,0043 A = 4,3 mA.
+Por lo tanto, la corriente que circula por la base del transistor es aproximadamente 4,3 miliamperios.
 
  ## Pregunta 14
  Un Tecnólogo controla un motor de corriente continua con un transistor NPN TIP31 y un diodo
@@ -120,6 +125,8 @@ RAZÓN: La bobina del motor genera una tensión inducida de polaridad inversa al
 corriente que la atraviesa.
 Con base en el análisis, se concluye que:
 
+### Respuesta: Ambas proposiciones son verdaderas y la razón sustenta de forma directa la afirmación.
+La afirmación es verdadera porque el diodo protege al transistor de los picos de tensión generados por el motor. La razón también es verdadera, ya que la bobina del motor produce una tensión inducida de polaridad inversa cuando se interrumpe la corriente. El diodo proporciona un camino para esa corriente y reduce el riesgo de dañar el transistor.
 
  ## Pregunta 15
  Un Técnico controla la velocidad de un motor de corriente continua mediante
@@ -128,6 +135,8 @@ para Arduino UNO R3, cargado desde la terminal de la Raspberry Pi 5 con Debian 1
 usando Arduino CLI (interfaz de línea de comandos). La base del transistor de
 potencia se conecta a un pin digital con salida PWM. ¿Cuál pin digital de la placa tiene
 esta capacidad?
+### Respuesta: Pin digital 9. 
+El Arduino UNO R3 permite generar señales PWM mediante los pines digitales 3, 5, 6, 9, 10 y 11. El pin 9 es uno de ellos, por lo que puede utilizarse con la función analogWrite() para controlar la velocidad del motor mediante un transistor.
 
  ## Pregunta 16
  Un Tecnólogo activa un relé electromecánico de 5 voltios, con una bobina que
@@ -137,6 +146,8 @@ fuente independiente. Cada pin digital de Arduino UNO R3 suministra como máximo
 Debian 13 mediante Arduino CLI (interfaz de línea de comandos). ¿Por qué el pin
 digital controla un transistor de disparo en lugar de conectarse a la bobina?
 
+### Respuesta: Porque la demanda de la bobina excede la capacidad de corriente que soporta el pin.
+La bobina del relé consume 72 mA, mientras que el pin digital del Arduino tiene un límite indicado de 40 mA. Por esta razón, se utiliza un transistor como interruptor electrónico para controlar la corriente de la bobina sin sobrecargar el pin del Arduino
 
  ## Pregunta 17
  Un Técnico energiza un motor de corriente continua con un relé electromecánico
@@ -149,6 +160,8 @@ Declaración 2: El diodo en paralelo con la bobina limita el pico de tensión ge
 interrumpirse su corriente.
 De acuerdo con la especificación, se puede afirmar que:
 
+### Respuesta: Solo la declaración 2 es verdadera
+La declaración 1 es falsa porque la bobina del relé y los contactos que controlan el motor pertenecen a circuitos eléctricamente separados. La declaración 2 es verdadera porque el diodo conectado en paralelo con la bobina limita el pico de tensión que aparece cuando se interrumpe la corriente, protegiendo los componentes electrónicos.
 
  ## Pregunta 18
  Un Tecnólogo simula un sistema de riego con un potenciómetro como sensor de
@@ -158,6 +171,10 @@ Raspberry Pi 5 con Debian 13 con Arduino CLI (interfaz de línea de comandos), a
 el relé cuando la lectura supera 700 y lo desactiva cuando desciende por debajo de
 600 . ¿Qué situación evita esta diferencia entre los dos umbrales?
 
+### Respuesta: Los cierres y aperturas repetidos del relé cuando la señal fluctúa alrededor de un único valor.
+Utilizar dos umbrales, uno de encendido en 700 y otro de apagado en 600, implementa una técnica llamada histéresis. Esta evita que el relé se active y desactive repetidamente cuando la lectura fluctúa cerca de un mismo valor, proporcionando mayor estabilidad al sistema de riego.
+
+
  ## Pregunta 19
  Un Técnico conecta un microinterruptor que cierra el contacto entre el pin 2 y 5
 voltios mientras la puerta permanece cerrada, con una resistencia pull-down
@@ -165,6 +182,8 @@ voltios mientras la puerta permanece cerrada, con una resistencia pull-down
 desde la terminal de la Raspberry Pi 5 con Debian 13 usando Arduino CLI (interfaz de
 línea de comandos), activa un buzzer con la función tone() cuando detecta la apertura.
 Si la puerta se abre, entonces:
+### Respuesta: el pin 2 lee nivel LOW y el sketch activa el buzzer con la función tone().
+Cuando la puerta se abre, el microinterruptor deja de conectar el pin 2 a los 5 V. La resistencia pull-down mantiene el pin conectado a tierra, por lo que se lee un nivel LOW. El programa detecta este nivel como una apertura y activa el buzzer mediante la función .
 
 
  ## Pregunta 20
