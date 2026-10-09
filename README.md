@@ -55,6 +55,8 @@ de luz) en Arduino UNO R3, cargado desde la terminal de la Raspberry Pi 5 con De
 izquierda a derecha y regresa, con cada LED de los extremos encendido una sola vez
 por ciclo. ¿Cuánto dura un ciclo completo de ida y vuelta?
 
+### Respuesta: 800 milisegundos.
+Para completar el recorrido, los LEDs se encienden primero de izquierda a derecha y después regresan, sin repetir los LEDs de los extremos. En total se realizan 10 pasos y, como cada uno dura 80 milisegundos, se multiplica 10 × 80, dando como resultado 800 milisegundos.
 
  ## Pregunta 8
  Un Tecnólogo escribe en la Raspberry Pi 5 con Debian 13 el sketch .ino de un efecto
@@ -62,6 +64,9 @@ de luces para la placa Arduino UNO R3. La compilación finaliza con éxito, pero
 ejecutar el subcomando upload de Arduino CLI (interfaz de línea de comandos), el
 sistema muestra un mensaje de permiso denegado sobre el dispositivo /dev/ttyACM0.
 ¿Qué acción habilita el acceso al puerto serie para este usuario?
+
+### Respuesta : Agregar el usuario al grupo dialout y reiniciar su sesión en Debian 13.
+Esto sucede porque el usuario no tiene los permisos necesarios para acceder al puerto serie de Arduino. Al agregarlo al grupo dialout y volver a iniciar sesión, puede obtener los permisos necesarios para cargar el programa en la placa.
 
  ## Pregunta 9
  Un Técnico conecta un potenciómetro de 10 kiloohmios al pin analógico A0 de
@@ -71,6 +76,8 @@ sketch .ino la convierte al rango de 0 a 255 con la función map() antes de llam
 analogWrite(). El sketch se compila y se carga desde la terminal de la Raspberry Pi 5
 con Debian 13 con Arduino CLI (interfaz de línea de comandos). ¿Qué valor recibe
 analogWrite()?
+### Respuesta : 204
+La lectura del potenciómetro es 819, pero la función analogWrite() trabaja con valores de 0 a 255. Por eso, se utiliza la función map() para convertir la lectura al rango que necesita Arduino. Al hacer la conversión, el resultado es aproximadamente 204.
 
  ## Pregunta 10
  Un Tecnólogo carga desde la terminal de la Raspberry Pi 5 con Debian 13, mediante
@@ -78,6 +85,9 @@ Arduino CLI (interfaz de línea de comandos), un sketch .ino que inicia la comun
 serial a 9600 baudios para mostrar las lecturas de un potenciómetro. Al abrir el
 monitor serial con una configuración de 115200 baudios, la terminal presenta
 caracteres ilegibles. ¿Cuál es la causa de este comportamiento?
+
+### Respuesta: El monitor muestrea los bits con una tasa distinta a la configurada en el sketch
+El problema ocurre porque el programa está configurado a 9600 baudios, mientras que el monitor serial está a 115200. Como ambos tienen velocidades diferentes, los datos no se interpretan correctamente y aparecen caracteres extraños. Para solucionarlo, hay que configurar ambos con la misma velocidad.
 
 
  ## Pregunta 11
@@ -87,7 +97,8 @@ UNO R3. Desde la terminal de la Raspberry Pi 5 con Debian 13, compila y carga el
 sketch .ino con Arduino CLI (interfaz de línea de comandos) y recibe las lecturas en el
 monitor serial. ¿Qué valor tiene la constante de tiempo del circuito RC
 (resistencia-capacitor)?
-
+### Respuesta: 4,7 segundos.
+Para conocer la constante de tiempo del circuito, se multiplica el valor de la resistencia por el de la capacitancia. En este caso, la resistencia es de 10.000 ohmios y el capacitor es de 470 microfaradios. Al realizar la operación, el resultado es 4,7 segundos.
 
  ## Pregunta 12
  Un Tecnólogo grafica desde el monitor serial de Arduino CLI (interfaz de línea de
@@ -99,6 +110,8 @@ hacia cero.
 Declaración 2: Al transcurrir una constante de tiempo de carga, el capacitor alcanza el
 100 % de la tensión de la fuente.
 De acuerdo con el comportamiento del circuito, se puede afirmar que:
+### Respuesta: Solo la declaración 1 es verdadera
+La primera afirmación es verdadera porque, cuando el capacitor se descarga, su voltaje va disminuyendo poco a poco hasta acercarse a cero. En cambio, la segunda es falsa porque, después de una constante de tiempo, el capacitor alcanza aproximadamente el 63,2 % del voltaje de la fuente, no el 100 %.
 
  ## Pregunta 13
  Un Técnico conmuta un LED con un transistor NPN 2N2222 (transistor bipolar de
