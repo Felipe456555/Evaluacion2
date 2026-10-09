@@ -15,6 +15,7 @@ sketch semaforo_tres_tiempos, que contiene el archivo semaforo_tres_tiempos.ino
 para la placa Arduino UNO R3. Antes de conectar la placa, necesita detectar errores
 de sintaxis del código mediante Arduino CLI (interfaz de línea de comandos). ¿Qué
 acción ejecuta para lograrlo?
+### Respuesta:
 
  ## Pregunta 3
 Un Técnico programa un contador binario de 4 bits en Arduino UNO R3 desde la
@@ -23,6 +24,7 @@ variable contador, y el sketch enciende el LED (diodo emisor de luz) del bit i c
 resultado de desplazar contador i posiciones a la derecha y aplicar la operación lógica
 AND bit a bit con el valor 1 es igual a 1. Tras trece pulsaciones, ¿cuáles LEDs
 permanecen encendidos?
+### Respuesta:
 
 
  ## Pregunta 4
@@ -32,6 +34,7 @@ genera varias transiciones eléctricas durante unos pocos milisegundos. El sketc
 se compila y se carga desde la terminal de la Raspberry Pi 5 con Debian 13 mediante
 Arduino CLI (interfaz de línea de comandos). ¿Qué técnica de software corrige este
 comportamiento?
+### Respuesta:
 
  ## Pregunta 5
  Un Técnico conecta un DIP switch (conmutador de posiciones fijas) de 4 canales a la
@@ -47,6 +50,7 @@ UNO R3 y tierra (referencia de 0 voltios). En el sketch .ino, cada pin se declar
 modo INPUT_PULLUP, que activa una resistencia interna conectada a 5 voltios. Si un
 canal se coloca en la posición ON, que cierra el contacto con tierra, entonces la
 función digitalRead() sobre ese pin devuelve:
+### Respuesta:
 
  ## Pregunta 7
  Un Técnico programa un efecto de luces de persecución con 6 LEDs (diodos emisores
@@ -208,6 +212,7 @@ PORQUE
 RAZÓN: La función entrega en el pin un nivel HIGH constante hasta que se ejecuta la función
 noTone().
 Con base en el análisis, se concluye que:
+### Respuesta:
 
 
  ## Pregunta 21
@@ -216,6 +221,7 @@ fotorresistencia (LDR) entre 5 voltios y el pin analógico A0 de Arduino UNO R3,
 resistencia de 10 kiloohmios entre A0 y tierra. El sketch .ino se carga desde la terminal
 de la Raspberry Pi 5 con Debian 13 usando Arduino CLI (interfaz de línea de
 comandos). Si la luz ambiental disminuye, entonces la lectura de A0:
+### Respuesta:
 
 
  ## Pregunta 22
@@ -226,6 +232,7 @@ Raspberry Pi 5 con Debian 13 usando Arduino CLI (interfaz de línea de comandos)
 aplica la función map() para convertir la lectura de 0 a 1023 en una cantidad de LEDs
 de 0 a 5, descartando los decimales. Si la lectura vale 450, ¿cuántos LEDs permanecen
 encendidos?
+### Respuesta:
 
  ## Pregunta 23
  Un Técnico programa en Arduino UNO R3 un cruce peatonal coordinado: un script en
@@ -237,6 +244,7 @@ II. El semáforo vehicular pasa a amarillo.
 III. El semáforo peatonal pasa a verde.
 IV. El semáforo peatonal vuelve a rojo y el vehicular a verde.
 ¿En qué orden ocurren los eventos
+### Respuesta:
 
  ## Pregunta 24
  Un Tecnólogo ejecuta en la Raspberry Pi 5 con Debian 13 un script en Python que
@@ -245,6 +253,7 @@ inmediato el comando para encender un LED (diodo emisor de luz). El sketch .ino 
 cargó previamente con Arduino CLI (interfaz de línea de comandos) y recibe
 comandos con la función Serial.read(), pero el LED permanece apagado en el primer
 envío. ¿Cuál es la causa más probable?
+### Respuesta:
 
  ## Pregunta 25
  Un Técnico instala Arduino CLI (interfaz de línea de comandos) en una Raspberry Pi 5
@@ -252,3 +261,4 @@ con Debian 13 recién configurada y crea el sketch .ino de un semáforo vehicula
 Arduino UNO R3. Al ejecutar el subcomando compile con el identificador
 arduino:avr:uno, la terminal informa que el soporte de la placa está ausente. ¿Qué
 acción permite continuar con la compilación?
+### Respuesta:
