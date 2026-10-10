@@ -37,7 +37,7 @@ genera varias transiciones eléctricas durante unos pocos milisegundos. El sketc
 se compila y se carga desde la terminal de la Raspberry Pi 5 con Debian 13 mediante
 Arduino CLI (interfaz de línea de comandos). ¿Qué técnica de software corrige este
 comportamiento?
-### Respuesta: C.ignora nuevas lecturas del pulsador durante un breve intervalo tras detectar el primer cambio.
+### Respuesta: C. ignora nuevas lecturas del pulsador durante un breve intervalo tras detectar el primer cambio.
 El rebote mecánico ocurre cuando los contactos internos de un pulsador generan varias transiciones eléctricas en un intervalo muy corto al presionarlo. Esto puede provocar que Arduino registre varias pulsaciones en lugar de una sola y, por lo tanto, incremente incorrectamente el contador.
 
  ## Pregunta 5
@@ -219,8 +219,9 @@ PORQUE
 RAZÓN: La función entrega en el pin un nivel HIGH constante hasta que se ejecuta la función
 noTone().
 Con base en el análisis, se concluye que:
-### Respuesta:
-
+### Respuesta: B. La afirmación es verdadera, mientras que la razón es falsa
+ La afirmación:* tone(pin, frecuencia) sí hace sonar un buzzer pasivo. El pasivo necesita una señal de frecuencia, a diferencia del activo que solo necesita voltaje.
+ Falsa:* No entrega un nivel HIGH constante. Entrega una onda cuadrada que alterna HIGH/LOW a la frecuencia pedida. Si fuera HIGH constante solo escuchas un "clic". Por eso noTone() es necesario para detener la onda.
 
  ## Pregunta 21
  Un Técnico construye un alumbrado inteligente con un divisor de voltaje: una
@@ -228,8 +229,11 @@ fotorresistencia (LDR) entre 5 voltios y el pin analógico A0 de Arduino UNO R3,
 resistencia de 10 kiloohmios entre A0 y tierra. El sketch .ino se carga desde la terminal
 de la Raspberry Pi 5 con Debian 13 usando Arduino CLI (interfaz de línea de
 comandos). Si la luz ambiental disminuye, entonces la lectura de A0:
-### Respuesta:
-
+### Respuesta: A. disminuye porque la LDR aumenta su resistencia y la resistencia fija recibe menos tensión.
+Montaje: 5V -> LDR -> A0 -> 10k -> GND
+Es un divisor: V_A0 = 5V _ (10k / (R_LDR + 10k))
+ Con luz: R_LDR baja (1k-2k) -> V_A0 alto.
+ Sin luz: R_LDR sube (100k-1M) -> el denominador crece -> V_A0 baja. La caída de tensión se la queda la LDR.
 
  ## Pregunta 22
  Un Tecnólogo construye un indicador de nivel tipo VU-meter (medidor de unidades de
@@ -239,7 +243,11 @@ Raspberry Pi 5 con Debian 13 usando Arduino CLI (interfaz de línea de comandos)
 aplica la función map() para convertir la lectura de 0 a 1023 en una cantidad de LEDs
 de 0 a 5, descartando los decimales. Si la lectura vale 450, ¿cuántos LEDs permanecen
 encendidos?
-### Respuesta:
+### Respuesta: A. 2 LEDs.
+map() hace regla de tres:
+450 _ 5 / 1023 = 2.19
+La función map() convierte la lectura analógica de 0 a 1023 en un rango de 0 a 5. Para una lectura de 450, el resultado aproximado es 2,19. Como la función descarta los decimales, el valor se trunca a 2, por lo que permanecen encendidos dos LEDs.
+
 
  ## Pregunta 23
  Un Técnico programa en Arduino UNO R3 un cruce peatonal coordinado: un script en
@@ -251,7 +259,8 @@ II. El semáforo vehicular pasa a amarillo.
 III. El semáforo peatonal pasa a verde.
 IV. El semáforo peatonal vuelve a rojo y el vehicular a verde.
 ¿En qué orden ocurren los eventos
-### Respuesta:
+### Respuesta: C. II, I, III, IV.
+Al presionar el pulsador peatonal, el semáforo vehicular cambia primero de verde a amarillo para advertir la detención, y posteriormente pasa a rojo. Una vez detenido el tráfico vehicular, el semáforo peatonal cambia a verde, permitiendo el cruce seguro. Finalmente, el semáforo peatonal vuelve a rojo y el vehicular retorna a verde, restableciendo la circulación normal.
 
  ## Pregunta 24
  Un Tecnólogo ejecuta en la Raspberry Pi 5 con Debian 13 un script en Python que
@@ -260,7 +269,8 @@ inmediato el comando para encender un LED (diodo emisor de luz). El sketch .ino 
 cargó previamente con Arduino CLI (interfaz de línea de comandos) y recibe
 comandos con la función Serial.read(), pero el LED permanece apagado en el primer
 envío. ¿Cuál es la causa más probable?
-### Respuesta:
+### Respuesta: B. La placa se reinicia al abrirse el puerto serie y tarda unos segundos en iniciar el sketch.
+Al abrir el puerto serie desde Python mediante la biblioteca pyserial, la placa Arduino UNO R3 puede reiniciarse automáticamente. Durante este proceso, el sketch necesita unos segundos para inicializarse y comenzar a recibir comandos. Si el script envía la instrucción inmediatamente, el primer comando puede perderse porque Arduino todavía no está preparado para procesarlo. Por ello, se recomienda establecer una breve espera antes de transmitir los datos.
 
  ## Pregunta 25
  Un Técnico instala Arduino CLI (interfaz de línea de comandos) en una Raspberry Pi 5
@@ -268,4 +278,6 @@ con Debian 13 recién configurada y crea el sketch .ino de un semáforo vehicula
 Arduino UNO R3. Al ejecutar el subcomando compile con el identificador
 arduino:avr:uno, la terminal informa que el soporte de la placa está ausente. ¿Qué
 acción permite continuar con la compilación?
-### Respuesta:
+### Respuesta: D. Ejecutar core update-index y core
+install con el paquete arduino:avr.
+Arduino CLI requiere instalar el paquete de soporte correspondiente a la placa para poder compilar el código. El comando core update-index actualiza el índice de paquetes disponibles, mientras que core install arduino:avr instala los recursos necesarios para Arduino UNO R3. Una vez instalado el paquete, es posible ejecutar nuevamente el subcomando compile para verificar y compilar el sketch
