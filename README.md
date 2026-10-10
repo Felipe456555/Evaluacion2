@@ -1,11 +1,11 @@
 # Respuestas Evaluación 2 introducción a Tecnología de Información
 
-Andres Gomez /Juan Capera /David Valenzuela /Santiago Agudelo
+Andres Gomez // Juan Capera // David Valenzuela // Santiago Agudelo
 
 ## Pregunta 1
 Un Técnico desarrolla en la terminal de la Raspberry Pi 5 con Debian 13 un sketch .ino para una maqueta de Internet de las Cosas que simula un semáforo vehicular de tres tiempos en la placa Arduino UNO R3. El sketch mantiene el verde durante 5000 milisegundos, el amarillo durante 2000 milisegundos y el rojo durante 4000 milisegundos mediante la función delay(). Al contrastar la temporización real con la esperada en el monitor serial de Arduino CLI (interfaz de línea de comandos), ¿qué duración total tiene un ciclo completo?
 
-### Respuesta: 11000 milisegundos 
+### Respuesta: D. 11000 milisegundos 
 
 La función delay() pausa la ejecución del programa durante el tiempo indicado en cada etapa en la que las LEDS se encienden. Por eso, un ciclo completo dura aproximadamente 11 segundos, sin contar pequeños tiempos adicionales de ejecución del programa.
  
@@ -15,7 +15,9 @@ sketch semaforo_tres_tiempos, que contiene el archivo semaforo_tres_tiempos.ino
 para la placa Arduino UNO R3. Antes de conectar la placa, necesita detectar errores
 de sintaxis del código mediante Arduino CLI (interfaz de línea de comandos). ¿Qué
 acción ejecuta para lograrlo?
-### Respuesta:
+
+### Respuesta: C. Ejecuta el subcomando compile e indica el identificador de la placa.
+El subcomando compile de Arduino CLI permite compilar el código fuente de un sketch para una placa específica, con el fin de detectar errores de sintaxis y otros errores de compilación antes de cargar el programa en el microcontrolador. Para una Arduino UNO R3, se debe especificar el identificador de la placa, que normalmente es arduino:avr:uno.
 
  ## Pregunta 3
 Un Técnico programa un contador binario de 4 bits en Arduino UNO R3 desde la
@@ -24,7 +26,8 @@ variable contador, y el sketch enciende el LED (diodo emisor de luz) del bit i c
 resultado de desplazar contador i posiciones a la derecha y aplicar la operación lógica
 AND bit a bit con el valor 1 es igual a 1. Tras trece pulsaciones, ¿cuáles LEDs
 permanecen encendidos?
-### Respuesta:
+### Respuesta: B. Los LEDs de los bits 0, 1 y 3.
+El programa utiliza operaciones bit a bit para comprobar el estado de cada posición. Cuando el resultado es 1, el LED correspondiente se enciende; cuando es 0, permanece apagado. Por esta razón, los LEDs de los bits 0, 2 y 3 permanecen encendidos, mientras que el LED del bit 1 permanece apagado.
 
 
  ## Pregunta 4
@@ -34,7 +37,8 @@ genera varias transiciones eléctricas durante unos pocos milisegundos. El sketc
 se compila y se carga desde la terminal de la Raspberry Pi 5 con Debian 13 mediante
 Arduino CLI (interfaz de línea de comandos). ¿Qué técnica de software corrige este
 comportamiento?
-### Respuesta:
+### Respuesta: C.ignora nuevas lecturas del pulsador durante un breve intervalo tras detectar el primer cambio.
+El rebote mecánico ocurre cuando los contactos internos de un pulsador generan varias transiciones eléctricas en un intervalo muy corto al presionarlo. Esto puede provocar que Arduino registre varias pulsaciones en lugar de una sola y, por lo tanto, incremente incorrectamente el contador.
 
  ## Pregunta 5
  Un Técnico conecta un DIP switch (conmutador de posiciones fijas) de 4 canales a la
@@ -43,6 +47,8 @@ el patrón de encendido de 4 LEDs (diodos emisores de luz) mediante una tabla de
 verdad, y los canales 3 y 4 seleccionan la velocidad del efecto. El sketch .ino se carga
 desde la terminal de la Raspberry Pi 5 con Debian 13 usando Arduino CLI (interfaz de
 línea de comandos). ¿Cuántos patrones distintos permite seleccionar el tablero?
+### Respuesta: A. 4 patrones
+Los canales 1 y 2 del DIP switch controlan la selección de patrones y cada uno posee dos estados posibles: ON y OFF. Por lo tanto, existen \(2^2 = 4\) combinaciones posibles. Los canales 3 y 4 regulan la velocidad del efecto, sin modificar la cantidad de patrones disponibles.
 
  ## Pregunta 6
  Un Tecnólogo conecta cada canal de un DIP switch entre un pin digital de Arduino
@@ -50,7 +56,8 @@ UNO R3 y tierra (referencia de 0 voltios). En el sketch .ino, cada pin se declar
 modo INPUT_PULLUP, que activa una resistencia interna conectada a 5 voltios. Si un
 canal se coloca en la posición ON, que cierra el contacto con tierra, entonces la
 función digitalRead() sobre ese pin devuelve:
-### Respuesta:
+### Respuesta: D. Nivel LOW porque el contacto cerrado impone sobre el pin una tensión de cero voltios.
+En Arduino UNO R3, la configuración INPUT_PULLUP activa una resistencia interna que conecta el pin digital a la alimentación de 5 V. Esta resistencia mantiene el pin en un estado lógico HIGH cuando el interruptor está abierto, evitando que la entrada quede flotante. Cuando el canal del DIP switch se coloca en ON, el contacto se cierra y conecta el pin directamente a tierra (GND). Como consecuencia, la tensión en el pin se aproxima a 0 V y la función digitalRead() devuelve LOW.
 
  ## Pregunta 7
  Un Técnico programa un efecto de luces de persecución con 6 LEDs (diodos emisores
@@ -59,7 +66,7 @@ de luz) en Arduino UNO R3, cargado desde la terminal de la Raspberry Pi 5 con De
 izquierda a derecha y regresa, con cada LED de los extremos encendido una sola vez
 por ciclo. ¿Cuánto dura un ciclo completo de ida y vuelta?
 
-### Respuesta: 800 milisegundos.
+### Respuesta: B. 800 milisegundos.
 Para completar el recorrido, los LEDs se encienden primero de izquierda a derecha y después regresan, sin repetir los LEDs de los extremos. En total se realizan 10 pasos y, como cada uno dura 80 milisegundos, se multiplica 10 × 80, dando como resultado 800 milisegundos.
 
  ## Pregunta 8
@@ -69,7 +76,7 @@ ejecutar el subcomando upload de Arduino CLI (interfaz de línea de comandos), e
 sistema muestra un mensaje de permiso denegado sobre el dispositivo /dev/ttyACM0.
 ¿Qué acción habilita el acceso al puerto serie para este usuario?
 
-### Respuesta : Agregar el usuario al grupo dialout y reiniciar su sesión en Debian 13.
+### Respuesta : A. Agregar el usuario al grupo dialout y reiniciar su sesión en Debian 13.
 Esto sucede porque el usuario no tiene los permisos necesarios para acceder al puerto serie de Arduino. Al agregarlo al grupo dialout y volver a iniciar sesión, puede obtener los permisos necesarios para cargar el programa en la placa.
 
  ## Pregunta 9
@@ -80,7 +87,7 @@ sketch .ino la convierte al rango de 0 a 255 con la función map() antes de llam
 analogWrite(). El sketch se compila y se carga desde la terminal de la Raspberry Pi 5
 con Debian 13 con Arduino CLI (interfaz de línea de comandos). ¿Qué valor recibe
 analogWrite()?
-### Respuesta : 204
+### Respuesta : D. 204
 La lectura del potenciómetro es 819, pero la función analogWrite() trabaja con valores de 0 a 255. Por eso, se utiliza la función map() para convertir la lectura al rango que necesita Arduino. Al hacer la conversión, el resultado es aproximadamente 204.
 
  ## Pregunta 10
@@ -90,7 +97,7 @@ serial a 9600 baudios para mostrar las lecturas de un potenciómetro. Al abrir e
 monitor serial con una configuración de 115200 baudios, la terminal presenta
 caracteres ilegibles. ¿Cuál es la causa de este comportamiento?
 
-### Respuesta: El monitor muestrea los bits con una tasa distinta a la configurada en el sketch
+### Respuesta: C. El monitor muestrea los bits con una tasa distinta a la configurada en el sketch
 El problema ocurre porque el programa está configurado a 9600 baudios, mientras que el monitor serial está a 115200. Como ambos tienen velocidades diferentes, los datos no se interpretan correctamente y aparecen caracteres extraños. Para solucionarlo, hay que configurar ambos con la misma velocidad.
 
 
@@ -101,7 +108,7 @@ UNO R3. Desde la terminal de la Raspberry Pi 5 con Debian 13, compila y carga el
 sketch .ino con Arduino CLI (interfaz de línea de comandos) y recibe las lecturas en el
 monitor serial. ¿Qué valor tiene la constante de tiempo del circuito RC
 (resistencia-capacitor)?
-### Respuesta: 4,7 segundos.
+### Respuesta: C. 4,7 segundos.
 Para conocer la constante de tiempo del circuito, se multiplica el valor de la resistencia por el de la capacitancia. En este caso, la resistencia es de 10.000 ohmios y el capacitor es de 470 microfaradios. Al realizar la operación, el resultado es 4,7 segundos.
 
  ## Pregunta 12
@@ -114,7 +121,7 @@ hacia cero.
 Declaración 2: Al transcurrir una constante de tiempo de carga, el capacitor alcanza el
 100 % de la tensión de la fuente.
 De acuerdo con el comportamiento del circuito, se puede afirmar que:
-### Respuesta: Solo la declaración 1 es verdadera
+### Respuesta: A. Solo la declaración 1 es verdadera
 La primera afirmación es verdadera porque, cuando el capacitor se descarga, su voltaje va disminuyendo poco a poco hasta acercarse a cero. En cambio, la segunda es falsa porque, después de una constante de tiempo, el capacitor alcanza aproximadamente el 63,2 % del voltaje de la fuente, no el 100 %.
 
  ## Pregunta 13
@@ -124,7 +131,7 @@ resistencia de base de 1 kiloohmio. El sketch .ino se carga desde la terminal de
 Raspberry Pi 5 con Debian 13 con Arduino CLI (interfaz de línea de comandos). Si la
 unión base-emisor presenta una caída de 0,7 voltios en saturación, ¿qué corriente de
 base circula aproximadamente?
-### Respuesta:4,3 miliamperios.
+### Respuesta: B. 4,3 miliamperios.
 La corriente de base se calcula aplicando la ley de Ohm:
 I = (Voltaje de entrada − Caída base-emisor) / Resistencia
 I = (5 V − 0,7 V) / 1000 Ω
@@ -142,7 +149,7 @@ RAZÓN: La bobina del motor genera una tensión inducida de polaridad inversa al
 corriente que la atraviesa.
 Con base en el análisis, se concluye que:
 
-### Respuesta: Ambas proposiciones son verdaderas y la razón sustenta de forma directa la afirmación.
+### Respuesta: B. Ambas proposiciones son verdaderas y la razón sustenta de forma directa la afirmación.
 La afirmación es verdadera porque el diodo protege al transistor de los picos de tensión generados por el motor. La razón también es verdadera, ya que la bobina del motor produce una tensión inducida de polaridad inversa cuando se interrumpe la corriente. El diodo proporciona un camino para esa corriente y reduce el riesgo de dañar el transistor.
 
  ## Pregunta 15
@@ -152,7 +159,7 @@ para Arduino UNO R3, cargado desde la terminal de la Raspberry Pi 5 con Debian 1
 usando Arduino CLI (interfaz de línea de comandos). La base del transistor de
 potencia se conecta a un pin digital con salida PWM. ¿Cuál pin digital de la placa tiene
 esta capacidad?
-### Respuesta: Pin digital 9. 
+### Respuesta: C. Pin digital 9. 
 El Arduino UNO R3 permite generar señales PWM mediante los pines digitales 3, 5, 6, 9, 10 y 11. El pin 9 es uno de ellos, por lo que puede utilizarse con la función analogWrite() para controlar la velocidad del motor mediante un transistor.
 
  ## Pregunta 16
@@ -163,7 +170,7 @@ fuente independiente. Cada pin digital de Arduino UNO R3 suministra como máximo
 Debian 13 mediante Arduino CLI (interfaz de línea de comandos). ¿Por qué el pin
 digital controla un transistor de disparo en lugar de conectarse a la bobina?
 
-### Respuesta: Porque la demanda de la bobina excede la capacidad de corriente que soporta el pin.
+### Respuesta: D. Porque la demanda de la bobina excede la capacidad de corriente que soporta el pin.
 La bobina del relé consume 72 mA, mientras que el pin digital del Arduino tiene un límite indicado de 40 mA. Por esta razón, se utiliza un transistor como interruptor electrónico para controlar la corriente de la bobina sin sobrecargar el pin del Arduino
 
  ## Pregunta 17
@@ -177,7 +184,7 @@ Declaración 2: El diodo en paralelo con la bobina limita el pico de tensión ge
 interrumpirse su corriente.
 De acuerdo con la especificación, se puede afirmar que:
 
-### Respuesta: Solo la declaración 2 es verdadera
+### Respuesta: B. Solo la declaración 2 es verdadera
 La declaración 1 es falsa porque la bobina del relé y los contactos que controlan el motor pertenecen a circuitos eléctricamente separados. La declaración 2 es verdadera porque el diodo conectado en paralelo con la bobina limita el pico de tensión que aparece cuando se interrumpe la corriente, protegiendo los componentes electrónicos.
 
  ## Pregunta 18
@@ -188,7 +195,7 @@ Raspberry Pi 5 con Debian 13 con Arduino CLI (interfaz de línea de comandos), a
 el relé cuando la lectura supera 700 y lo desactiva cuando desciende por debajo de
 600 . ¿Qué situación evita esta diferencia entre los dos umbrales?
 
-### Respuesta: Los cierres y aperturas repetidos del relé cuando la señal fluctúa alrededor de un único valor.
+### Respuesta: A. Los cierres y aperturas repetidos del relé cuando la señal fluctúa alrededor de un único valor.
 Utilizar dos umbrales, uno de encendido en 700 y otro de apagado en 600, implementa una técnica llamada histéresis. Esta evita que el relé se active y desactive repetidamente cuando la lectura fluctúa cerca de un mismo valor, proporcionando mayor estabilidad al sistema de riego.
 
 
@@ -199,7 +206,7 @@ voltios mientras la puerta permanece cerrada, con una resistencia pull-down
 desde la terminal de la Raspberry Pi 5 con Debian 13 usando Arduino CLI (interfaz de
 línea de comandos), activa un buzzer con la función tone() cuando detecta la apertura.
 Si la puerta se abre, entonces:
-### Respuesta: el pin 2 lee nivel LOW y el sketch activa el buzzer con la función tone().
+### Respuesta: B. el pin 2 lee nivel LOW y el sketch activa el buzzer con la función tone().
 Cuando la puerta se abre, el microinterruptor deja de conectar el pin 2 a los 5 V. La resistencia pull-down mantiene el pin conectado a tierra, por lo que se lee un nivel LOW. El programa detecta este nivel como una apertura y activa el buzzer mediante la función .
 
 
