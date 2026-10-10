@@ -230,10 +230,7 @@ resistencia de 10 kiloohmios entre A0 y tierra. El sketch .ino se carga desde la
 de la Raspberry Pi 5 con Debian 13 usando Arduino CLI (interfaz de línea de
 comandos). Si la luz ambiental disminuye, entonces la lectura de A0:
 ### Respuesta: A. disminuye porque la LDR aumenta su resistencia y la resistencia fija recibe menos tensión.
-Montaje: 5V -> LDR -> A0 -> 10k -> GND
-Es un divisor: V_A0 = 5V _ (10k / (R_LDR + 10k))
- Con luz: R_LDR baja (1k-2k) -> V_A0 alto.
- Sin luz: R_LDR sube (100k-1M) -> el denominador crece -> V_A0 baja. La caída de tensión se la queda la LDR.
+Cuando disminuye la luz ambiental, la resistencia de la fotorresistencia (LDR) aumenta. Como esta se encuentra conectada entre 5 voltios y el pin A0, el aumento de su resistencia provoca que una mayor proporción de la tensión del circuito aparezca en la resistencia fija de 10 kΩ. Por lo tanto, la tensión en A0 aumenta y Arduino registra una lectura analógica más alta.
 
  ## Pregunta 22
  Un Tecnólogo construye un indicador de nivel tipo VU-meter (medidor de unidades de
